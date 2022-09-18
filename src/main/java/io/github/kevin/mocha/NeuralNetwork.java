@@ -1,13 +1,10 @@
 package io.github.kevin.mocha;
 
-import io.github.kevin.mocha.internal.HiddenLayer;
-import io.github.kevin.mocha.internal.InputLayer;
-import io.github.kevin.mocha.internal.AbstractLayer;
-import io.github.kevin.mocha.internal.OutputLayer;
+import io.github.kevin.mocha.internal.Layer;
 
 public class NeuralNetwork {
 
-    private AbstractLayer[] layers;
+    private Layer[] layers;
 
     /**
      * Most basic constructor to create a network
@@ -27,7 +24,7 @@ public class NeuralNetwork {
             throw new IllegalArgumentException("There must be at least 3 layers.");
         }
         
-        layers = new AbstractLayer[sizes.length];
+        layers = new Layer[sizes.length];
         
         // create layers with correct sizes
         layers[0] = new InputLayer(sizes[0]);
