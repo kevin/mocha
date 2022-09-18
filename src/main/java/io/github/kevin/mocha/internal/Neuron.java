@@ -4,8 +4,12 @@ public class Neuron {
     
     private float value;
     
-    public Neuron(float v) {
-        value = v;
+    /**
+     * 
+     * @param value
+     */
+    public Neuron(float value) {
+        this.value = value;
     }
     
 }

@@ -1,10 +1,12 @@
 package io.github.kevin.mocha;
 
+import io.github.kevin.mocha.internal.Connection;
 import io.github.kevin.mocha.internal.Layer;
 
 public class NeuralNetwork {
 
     private Layer[] layers;
+    private Connection[][] connections;
 
     /**
      * Most basic constructor to create a network
@@ -27,11 +29,9 @@ public class NeuralNetwork {
         layers = new Layer[sizes.length];
         
         // create layers with correct sizes
-        layers[0] = new InputLayer(sizes[0]);
-        for (int i = 1; i < sizes.length-1; i++) {
-            layers[i] = new HiddenLayer(sizes[i]);
+        for (int i = 0; i < sizes.length; i++) {
+            layers[i] = new Layer(sizes[i]);
         }
-        layers[sizes.length-1] = new OutputLayer(sizes[sizes.length-1]);
         
     }
 
