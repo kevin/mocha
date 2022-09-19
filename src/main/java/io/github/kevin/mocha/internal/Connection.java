@@ -7,7 +7,7 @@ public class Connection {
     private float weight;
 
     /**
-     * Generate an empty connection
+     * Create an empty connection
      * 
      * @param from
      * @param to
@@ -16,6 +16,15 @@ public class Connection {
         this.from = from;
         this.to = to;
         weight = 0;
+    }
+
+    /**
+     * Set the value of this connection's weight
+     * 
+     * @param f The new weight
+     */
+    public void setWeight(float f) {
+        this.weight = f;
     }
 
 }
