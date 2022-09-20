@@ -14,16 +14,16 @@ public class NeuralNetwork {
      * Most basic constructor to create a network
      * 
      * @param sizes An array representing the number of neurons in each layer, where
-     *              sizes[0] is the input layer, sizes[1] to sizes[n-2] are hidden
-     *              layers, and sizes[n-1] is the output layer
+     *              sizes[0] is the input layer, sizes[n-1] is the output layer, and
+     *              anything in between is a hidden layer
      */
     public NeuralNetwork(int... sizes) {
-        // sizes must be length 3 or greater (1 hidden layer)
+        // sizes must be length 2 or greater (1 hidden layer)
         if (sizes == null) {
             throw new IllegalArgumentException("Parameter is null.");
         }
-        if (sizes.length < 3) {
-            throw new IllegalArgumentException("There must be at least 3 layers.");
+        if (sizes.length < 2) {
+            throw new IllegalArgumentException("There must be at least 2 layers.");
         }
 
         layers = new Layer[sizes.length];
@@ -85,7 +85,7 @@ public class NeuralNetwork {
         if (expected == null || expected.length != allData.length) {
             throw new IllegalArgumentException("Expected results are invalid.");
         }
-        
+
         randomizeWeights();
 
         for (int data = 0; data < allData.length; data++) {
