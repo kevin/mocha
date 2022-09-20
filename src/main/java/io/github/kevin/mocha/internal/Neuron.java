@@ -35,6 +35,23 @@ public class Neuron {
     }
 
     /**
+     * 
+     * @return The current value of this neuron
+     */
+    public float getValue() {
+        return value;
+    }
+
+    /**
+     * Set a new value for this neuron
+     * 
+     * @param value The new value
+     */
+    public void setValue(float value) {
+        this.value = value;
+    }
+
+    /**
      * Set a incoming connection object
      * 
      * @param index The index of the connection to set
@@ -96,6 +113,17 @@ public class Neuron {
 
     public String toString() {
         return "IN " + (in == null ? 0 : in.length) + " OUT " + (out == null ? 0 : out.length);
+    }
+
+    /**
+     * Calculate the activation of this neuron
+     */
+    public void calcActivation() {
+        float a = 0.0f;
+        for (Connection c : in) {
+            a += c.getWeight() * c.getFrom().getValue();
+        }
+        value = a;
     }
 
 }

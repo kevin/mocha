@@ -34,6 +34,14 @@ public class Connection {
     public void setWeight(float f) {
         this.weight = f;
     }
+    
+    /**
+     * 
+     * @return The neuron this connection comes from
+     */
+    public Neuron getFrom() {
+        return from;
+    }
 
     /**
      * Set the Neuron this connection comes from
@@ -42,6 +50,14 @@ public class Connection {
      */
     public void setFrom(Neuron from) {
         this.from = from;
+    }
+   
+    /**
+     * 
+     * @return the Neuron this connection goes to
+     */
+    public Neuron getTo() {
+        return to;
     }
 
     /**
