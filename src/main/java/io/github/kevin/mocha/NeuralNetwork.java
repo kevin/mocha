@@ -1,6 +1,8 @@
 package io.github.kevin.mocha;
 
+import io.github.kevin.mocha.internal.Connection;
 import io.github.kevin.mocha.internal.Layer;
+import io.github.kevin.mocha.internal.Neuron;
 
 public class NeuralNetwork {
 
@@ -29,11 +31,45 @@ public class NeuralNetwork {
         for (int i = 1; i < sizes.length; i++) {
             layers[i] = new Layer(sizes[i], sizes[i - 1]);
             // set the number of outgoing connections for the previous layer's neurons to
-            // the size of this layer (last layer will be left null)
+            // the size of this layer (last layer will be left null) and add outgoing
+            // connections to the previous layer connected to this layer
             for (int j = 0; j < sizes[i - 1]; j++) {
                 layers[i - 1].get(j).setOutgoingConnections(sizes[i]);
+                for (int k = 0; k < sizes[i]; k++) {
+                    layers[i - 1].get(j).setOut(k,
+                            new Connection(layers[i - 1].get(j), layers[i].get(k)));
+                }
+            }
+
+            // add incoming connections to this layer based on the previous layer's outgoing connections
+            for (int j = 0; j < sizes[i]; j++) {
+                for (int k = 0; k < sizes[i - 1]; k++) {
+                    layers[i].get(j).setIn(k, layers[i - 1].get(k).getOut(j));
+                    layers[i - 1].get(k).getOut(j).setTo(layers[i].get(j));
+                }
             }
         }
+    }
+    
+    /**
+     * Get the neuron at a specific layer and index
+     * @param layer
+     * @param index
+     * @return
+     */
+    public Neuron getNeuron(int layer, int index) {
+        // parameters must be in bounds
+        if (layer < 0 || layer >= layers.length) {
+            throw new IndexOutOfBoundsException();
+        }
+        return layers[layer].get(index);
+    }
+    
+    public String toString() {
+        String out = "";
+        for (Layer l : layers)
+            out += l.toString() + "\n";
+        return out;
     }
 
 }

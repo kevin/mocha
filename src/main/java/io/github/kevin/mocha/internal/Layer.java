@@ -21,15 +21,28 @@ public class Layer {
     /**
      * Get the neuron at an index of this layer
      * 
-     * @param id The index of the neuron
+     * @param index The index of the neuron
      * @return the Neuron object
      */
-    public Neuron get(int id) {
-        // sizes must be length 3 or greater (1 hidden layer)
-        if (id < 0 || id >= neurons.length) {
+    public Neuron get(int index) {
+        // index must be in bounds
+        if (index < 0 || index >= neurons.length) {
             throw new IndexOutOfBoundsException();
         }
-        return neurons[id];
+        return neurons[index];
+    }
+    
+    public String toString() {
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append("LAYER:\n");
+        sb.append("SIZE: " + neurons.length + "\n");
+        for (Neuron n : neurons) {
+            sb.append("\t" + n + "\n");
+        }
+        sb.append("------");
+        return sb.toString();
+        
     }
 
 }
