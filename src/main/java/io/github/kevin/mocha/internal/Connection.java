@@ -17,6 +17,14 @@ public class Connection {
         this.to = to;
         weight = 0;
     }
+   
+    /**
+     * 
+     * @return The current weight of this connection
+     */
+    public float getWeight() {
+        return weight;
+    }
 
     /**
      * Set the value of this connection's weight
