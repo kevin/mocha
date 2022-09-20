@@ -4,6 +4,8 @@ public class Neuron {
 
     // the value of this neuron
     private float value;
+    
+    private float bias;
 
     // the incoming and outgoing connections
     private Connection[] in;
@@ -16,6 +18,8 @@ public class Neuron {
      */
     public Neuron(float value, int connectionsIn) {
         this.value = value;
+        
+        bias = 0.0f;
 
         // connection arrays will be null if there is no incoming (input layer) or no
         // outgoing (output layer)
@@ -123,7 +127,7 @@ public class Neuron {
         for (Connection c : in) {
             a += c.getWeight() * c.getFrom().getValue();
         }
-        value = a;
+        value = a + bias;
     }
 
 }
