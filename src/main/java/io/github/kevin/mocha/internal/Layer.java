@@ -31,9 +31,16 @@ public class Layer {
         }
         return neurons[index];
     }
-    
+
+    /**
+     * 
+     * @return The number of neurons in this layer
+     */
+    public int getSize() {
+        return neurons.length;
+    }
+
     public String toString() {
-        
         StringBuilder sb = new StringBuilder();
         sb.append("LAYER:\n");
         sb.append("SIZE: " + neurons.length + "\n");
@@ -42,7 +49,6 @@ public class Layer {
         }
         sb.append("------");
         return sb.toString();
-        
     }
 
 }

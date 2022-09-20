@@ -1,5 +1,7 @@
 package io.github.kevin.mocha;
 
+import java.util.Random;
+
 import io.github.kevin.mocha.internal.Connection;
 import io.github.kevin.mocha.internal.Layer;
 import io.github.kevin.mocha.internal.Neuron;
@@ -41,7 +43,8 @@ public class NeuralNetwork {
                 }
             }
 
-            // add incoming connections to this layer based on the previous layer's outgoing connections
+            // add incoming connections to this layer based on the previous layer's outgoing
+            // connections
             for (int j = 0; j < sizes[i]; j++) {
                 for (int k = 0; k < sizes[i - 1]; k++) {
                     layers[i].get(j).setIn(k, layers[i - 1].get(k).getOut(j));
@@ -50,9 +53,10 @@ public class NeuralNetwork {
             }
         }
     }
-    
+
     /**
      * Get the neuron at a specific layer and index
+     * 
      * @param layer
      * @param index
      * @return
@@ -64,9 +68,68 @@ public class NeuralNetwork {
         }
         return layers[layer].get(index);
     }
-    
+
+    /**
+     * Train the network on given data
+     * 
+     * @param data     The set of training data, where any data[row].length (size of
+     *                 one training example) == layers[0].getSize() (input layer
+     *                 size)
+     * @param expected The expected results corresponding to each dataset
+     */
+    public void train(float[][] allData, float[][] expected) {
+        // check parameters
+        if (allData == null || allData.length == 0) {
+            throw new IllegalArgumentException("Data is invalid.");
+        }
+        if (expected == null || expected.length != allData.length) {
+            throw new IllegalArgumentException("Expected results are invalid.");
+        }
+        
+        randomizeWeights();
+
+        for (int data = 0; data < allData.length; data++) {
+            // check parameters for each training case
+            if (allData[data].length != layers[0].getSize()) {
+                throw new IllegalArgumentException("Dataset @ index " + data + " is invalid.");
+            }
+            if (expected[data].length != layers[layers.length - 1].getSize()) {
+                throw new IllegalArgumentException(
+                        "Expected results @ index " + data + " is invalid.");
+            }
+
+            // process this case
+        }
+    }
+
+    /**
+     * Populates all connection weights with random values
+     */
+    private void randomizeWeights() {
+        Random rng = new Random();
+        for (int i = 1; i <= layers.length; i++) {
+            for (int j = 0; j < layers[i].getSize(); j++) {
+                for (int k = 0; k < layers[i - 1].getSize(); k++) {
+                    layers[i].get(j).getIn(k).setWeight(rng.nextFloat());
+                }
+            }
+        }
+    }
+
+    /**
+     * 
+     * @return The total number of connections in this network
+     */
+    private int getNumConnections() {
+        int n = 0;
+        for (int i = 1; i < layers.length; i++) {
+            n += layers[i].getSize() * layers[i - 1].getSize();
+        }
+        return n;
+    }
+
     public String toString() {
-        String out = "";
+        String out = "NEURAL NETWORK:\n\tNUM CONNECTIONS: " + getNumConnections() + "\n";
         for (Layer l : layers)
             out += l.toString() + "\n";
         return out;

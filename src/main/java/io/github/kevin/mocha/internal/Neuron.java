@@ -45,10 +45,25 @@ public class Neuron {
         if (index < 0 || index >= in.length) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         in[index] = con;
     }
-    
+
+    /**
+     * Get the incoming connection at an index
+     * 
+     * @param index The index of the connection
+     * @return The connection object at the index
+     */
+    public Connection getIn(int index) {
+        // index must be in bounds
+        if (index < 0 || index >= in.length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return in[index];
+    }
+
     /**
      * Set a outgoing connection object
      * 
@@ -60,26 +75,13 @@ public class Neuron {
         if (index < 0 || index >= out.length) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         out[index] = con;
     }
-    
-    /**
-     * Get the incoming connection at an index
-     * @param index The index of the connection
-     * @return The connection object at the index
-     */
-    public Connection getIn(int index) {
-        // index must be in bounds
-        if (index < 0 || index >= in.length) {
-            throw new IndexOutOfBoundsException();
-        }
-        
-        return in[index];
-    }
-    
+
     /**
      * Get the outgoing connection at an index
+     * 
      * @param index The index of the connection
      * @return The connection object at the index
      */
@@ -88,10 +90,10 @@ public class Neuron {
         if (index < 0 || index >= out.length) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         return out[index];
     }
-    
+
     public String toString() {
         return "IN " + (in == null ? 0 : in.length) + " OUT " + (out == null ? 0 : out.length);
     }

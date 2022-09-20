@@ -26,7 +26,7 @@ public class Connection {
     public void setWeight(float f) {
         this.weight = f;
     }
-    
+
     /**
      * Set the Neuron this connection comes from
      * 
