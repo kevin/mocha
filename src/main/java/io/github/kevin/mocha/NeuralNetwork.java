@@ -107,7 +107,7 @@ public class NeuralNetwork {
      */
     private void randomizeWeights() {
         Random rng = new Random();
-        for (int i = 1; i <= layers.length; i++) {
+        for (int i = 1; i < layers.length; i++) {
             for (int j = 0; j < layers[i].getSize(); j++) {
                 for (int k = 0; k < layers[i - 1].getSize(); k++) {
                     layers[i].get(j).getIn(k).setWeight(rng.nextFloat());
