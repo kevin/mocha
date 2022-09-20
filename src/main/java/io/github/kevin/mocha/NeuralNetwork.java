@@ -115,6 +115,47 @@ public class NeuralNetwork {
             }
         }
     }
+    
+    /**
+     * Run the neural network on a given dataset
+     * @param data The data to predict from (input)
+     * @return The results
+     */
+    public float[] predict(float[] data) {
+    	// check parameters
+    	if (data == null || data.length != layers[0].getSize()) {
+            throw new IllegalArgumentException("Data is invalid.");
+    	}
+    	
+    	// set input layer to the data
+    	for (int i = 0; i < data.length; i++) {
+    		layers[0].get(i).setValue(data[i]);
+    	}
+    	
+    	// forward propagate with data
+    	forwardPropagate();
+    	
+    	// return the output layer
+    	float[] output = new float[layers[layers.length-1].getSize()];
+    	for (int i = 0; i < output.length; i++) {
+    		output[i] = layers[layers.length-1].get(i).getValue();
+    	}
+    	
+    	return output;
+    }
+   
+    /**
+     * Calculates forward propagation in the network
+     */
+    private void forwardPropagate() {
+    	// calculate activation for each neuron layer by later
+    	for (int i = 1; i < layers.length; i++) {
+    		for (int j = 0; j < layers[i].getSize(); j++) {
+    			// set this neuron value to its calculated activation
+    			layers[i].get(j).setValue(layers[i].get(j).calcActivation());
+    		}
+    	}
+    }
 
     /**
      * 

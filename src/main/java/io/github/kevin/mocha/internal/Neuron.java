@@ -122,12 +122,12 @@ public class Neuron {
     /**
      * Calculate the activation of this neuron
      */
-    public void calcActivation() {
+    public float calcActivation() {
         float a = 0.0f;
         for (Connection c : in) {
             a += c.getWeight() * c.getFrom().getValue();
         }
-        value = a + bias;
+        return a + bias;
     }
 
 }
