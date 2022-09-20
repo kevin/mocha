@@ -56,6 +56,21 @@ public class Neuron {
     }
 
     /**
+     * Get the incoming connection at an index
+     * 
+     * @param index The index of the connection
+     * @return The connection object at the index
+     */
+    public Connection getIn(int index) {
+        // index must be in bounds
+        if (index < 0 || index >= in.length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return in[index];
+    }
+    
+    /**
      * Set a incoming connection object
      * 
      * @param index The index of the connection to set
@@ -71,20 +86,20 @@ public class Neuron {
     }
 
     /**
-     * Get the incoming connection at an index
+     * Get the outgoing connection at an index
      * 
      * @param index The index of the connection
      * @return The connection object at the index
      */
-    public Connection getIn(int index) {
+    public Connection getOut(int index) {
         // index must be in bounds
-        if (index < 0 || index >= in.length) {
+        if (index < 0 || index >= out.length) {
             throw new IndexOutOfBoundsException();
         }
 
-        return in[index];
+        return out[index];
     }
-
+    
     /**
      * Set a outgoing connection object
      * 
@@ -98,21 +113,6 @@ public class Neuron {
         }
 
         out[index] = con;
-    }
-
-    /**
-     * Get the outgoing connection at an index
-     * 
-     * @param index The index of the connection
-     * @return The connection object at the index
-     */
-    public Connection getOut(int index) {
-        // index must be in bounds
-        if (index < 0 || index >= out.length) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        return out[index];
     }
 
     public String toString() {
