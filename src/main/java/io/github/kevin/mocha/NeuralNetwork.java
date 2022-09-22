@@ -86,7 +86,7 @@ public class NeuralNetwork {
             throw new IllegalArgumentException("Expected results are invalid.");
         }
 
-        randomizeWeights();
+        randomizeWeightsAndBiases();
 
         for (int data = 0; data < allData.length; data++) {
             // check parameters for each training case
@@ -103,15 +103,16 @@ public class NeuralNetwork {
     }
 
     /**
-     * Populates all connection weights with random values
+     * Populates all connection weights and neuron biases with random values
      */
-    private void randomizeWeights() {
+    private void randomizeWeightsAndBiases() {
         Random rng = new Random();
         for (int i = 1; i < layers.length; i++) {
             for (int j = 0; j < layers[i].getSize(); j++) {
                 for (int k = 0; k < layers[i - 1].getSize(); k++) {
                     layers[i].get(j).getIn(k).setWeight(rng.nextFloat());
                 }
+                layers[i].get(j).setBias(rng.nextFloat());
             }
         }
     }

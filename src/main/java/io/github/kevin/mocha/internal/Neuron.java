@@ -54,6 +54,23 @@ public class Neuron {
     public void setValue(float value) {
         this.value = value;
     }
+    
+    /**
+     * 
+     * @return The current bias of this neuron
+     */
+    public float getBias() {
+        return bias;
+    }
+    
+    /**
+     * Set a new bias for this neuron
+     * 
+     * @param bias The new bias value
+     */
+    public void setBias(float bias) {
+        this.bias = bias;
+    }
 
     /**
      * Get the incoming connection at an index
