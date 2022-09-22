@@ -127,7 +127,7 @@ public class Neuron {
         for (Connection c : in) {
             a += c.getWeight() * c.getFrom().getValue();
         }
-        return a + bias;
+        return MochaMath.sigmoid(a + bias);
     }
 
 }
