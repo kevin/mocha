@@ -1,5 +1,9 @@
 package io.github.kevin.mocha.internal;
 
+/**
+ * This class represents one neuron in a layer and its connections
+ * @author kevin
+ */
 public class Neuron {
 
     // the value of this neuron

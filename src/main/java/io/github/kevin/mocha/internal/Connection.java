@@ -1,5 +1,9 @@
 package io.github.kevin.mocha.internal;
 
+/**
+ * This class represents one connection between two neurons
+ * @author kevin
+ */
 public class Connection {
 
     private Neuron from;

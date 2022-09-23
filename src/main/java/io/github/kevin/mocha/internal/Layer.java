@@ -1,5 +1,9 @@
 package io.github.kevin.mocha.internal;
 
+/**
+ * This class represents a layer of neurons
+ * @author kevin
+ */
 public class Layer {
 
     private Neuron[] neurons;

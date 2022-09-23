@@ -6,9 +6,14 @@ import io.github.kevin.mocha.internal.Connection;
 import io.github.kevin.mocha.internal.Layer;
 import io.github.kevin.mocha.internal.Neuron;
 
+/**
+ * This class represents a whole network, which the end user can use
+ * @author kevin
+ */
 public class NeuralNetwork {
 
     private Layer[] layers;
+    private float learningRate;
 
     /**
      * Most basic constructor to create a network
@@ -27,6 +32,7 @@ public class NeuralNetwork {
         }
 
         layers = new Layer[sizes.length];
+        learningRate = 0.1f;
 
         // create layers and connections with correct sizes
         layers[0] = new Layer(sizes[0], 0);
@@ -68,6 +74,23 @@ public class NeuralNetwork {
         }
         return layers[layer].get(index);
     }
+    
+    /**
+     * 
+     * @return Get the current learning rate for this neural network
+     */
+    public float getLearningRate() {
+        return learningRate;
+    }
+    
+    /**
+     * Set a new learning rate for this neural network
+     * 
+     * @param rate The new learning rate to train with
+     */
+    public void setLearningRate(float rate) {
+        this.learningRate = rate;
+    }
 
     /**
      * Train the network on given data
@@ -99,11 +122,20 @@ public class NeuralNetwork {
             }
 
             // process this case
+            
+            // set the input layer to this dataset
+            for (int i = 0 ; i < layers[0].getSize(); i++) {
+                layers[0].get(i).setValue(allData[data][i]);
+            }
+            
+            // forward propagate to calculate error
+            forwardPropagate();
         }
     }
 
     /**
-     * Populates all connection weights and neuron biases with random values
+     * Populates all connection weights and neuron biases with random values.
+     * The input layer will be left alone, meaning all 0 bias values
      */
     private void randomizeWeightsAndBiases() {
         Random rng = new Random();
