@@ -73,10 +73,14 @@ public abstract class Trainer {
         }
     }
 
+    /**
+     * The implementation of the learning algorithm.
+     * @see io.github.kevin.mocha.learning.GradientDescent
+     */
     public abstract void train();
 
     // wrap methods for learning algorithms and to prevent breaking the network
-    
+
     /**
      * Get a layer object at an index
      * 
@@ -90,14 +94,14 @@ public abstract class Trainer {
         }
         return nn.getLayers()[index];
     }
-    
+
     /**
      * @return The number of layers in the network
      */
     protected int getNumLayers() {
         return nn.getLayers().length;
     }
-    
+
     /**
      * Populates all connection weights and neuron biases with random values. The
      * input layer will be left alone, meaning all 0 bias values
