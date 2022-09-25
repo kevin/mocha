@@ -2,13 +2,15 @@ package io.github.kevin.mocha.internal;
 
 /**
  * This class represents one neuron in a layer and its connections
+ * 
  * @author kevin
  */
 public class Neuron {
 
     // the value of this neuron
     private float value;
-    
+
+    // the bias of this neuron
     private float bias;
 
     // the incoming and outgoing connections
@@ -16,13 +18,14 @@ public class Neuron {
     private Connection[] out;
 
     /**
+     * Create a neuron object
      * 
      * @param value         The initial value of this neuron
      * @param connectionsIn The number of incoming connections to this neuron
      */
     public Neuron(float value, int connectionsIn) {
         this.value = value;
-        
+
         bias = 0.0f;
 
         // connection arrays will be null if there is no incoming (input layer) or no
@@ -43,7 +46,6 @@ public class Neuron {
     }
 
     /**
-     * 
      * @return The current value of this neuron
      */
     public float getValue() {
@@ -58,15 +60,14 @@ public class Neuron {
     public void setValue(float value) {
         this.value = value;
     }
-    
+
     /**
-     * 
      * @return The current bias of this neuron
      */
     public float getBias() {
         return bias;
     }
-    
+
     /**
      * Set a new bias for this neuron
      * 
@@ -90,7 +91,7 @@ public class Neuron {
 
         return in[index];
     }
-    
+
     /**
      * Set a incoming connection object
      * 
@@ -120,7 +121,7 @@ public class Neuron {
 
         return out[index];
     }
-    
+
     /**
      * Set a outgoing connection object
      * 
@@ -142,6 +143,8 @@ public class Neuron {
 
     /**
      * Calculate the activation of this neuron
+     * 
+     * @return the activation
      */
     public float calcActivation() {
         float a = 0.0f;

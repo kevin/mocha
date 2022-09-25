@@ -8,6 +8,7 @@ import io.github.kevin.mocha.internal.Neuron;
 
 /**
  * This class represents a whole network, which the end user can use
+ * 
  * @author kevin
  */
 public class NeuralNetwork {
@@ -32,7 +33,9 @@ public class NeuralNetwork {
         }
 
         layers = new Layer[sizes.length];
-        learningRate = 0.1f;
+        
+        // set a default learning rate`
+        learningRate = 0.01f;
 
         // create layers and connections with correct sizes
         layers[0] = new Layer(sizes[0], 0);
@@ -44,8 +47,7 @@ public class NeuralNetwork {
             for (int j = 0; j < sizes[i - 1]; j++) {
                 layers[i - 1].get(j).setOutgoingConnections(sizes[i]);
                 for (int k = 0; k < sizes[i]; k++) {
-                    layers[i - 1].get(j).setOut(k,
-                            new Connection(layers[i - 1].get(j), layers[i].get(k)));
+                    layers[i - 1].get(j).setOut(k, new Connection(layers[i - 1].get(j), layers[i].get(k)));
                 }
             }
 
@@ -63,8 +65,8 @@ public class NeuralNetwork {
     /**
      * Get the neuron at a specific layer and index
      * 
-     * @param layer
-     * @param index
+     * @param layer The layer of the desired neuron
+     * @param index The index of the desired neuron between 0 and the layer size - 1
      * @return
      */
     public Neuron getNeuron(int layer, int index) {
@@ -74,7 +76,15 @@ public class NeuralNetwork {
         }
         return layers[layer].get(index);
     }
-    
+   
+    /**
+     * Get the layers
+     * @return All layers
+     */
+    protected Layer[] getLayers() {
+        return layers;
+    }
+
     /**
      * 
      * @return Get the current learning rate for this neural network
@@ -82,7 +92,7 @@ public class NeuralNetwork {
     public float getLearningRate() {
         return learningRate;
     }
-    
+
     /**
      * Set a new learning rate for this neural network
      * 
@@ -93,51 +103,10 @@ public class NeuralNetwork {
     }
 
     /**
-     * Train the network on given data
-     * 
-     * @param data     The set of training data, where any data[row].length (size of
-     *                 one training example) == layers[0].getSize() (input layer
-     *                 size)
-     * @param expected The expected results corresponding to each dataset
+     * Populates all connection weights and neuron biases with random values. The
+     * input layer will be left alone, meaning all 0 bias values
      */
-    public void train(float[][] allData, float[][] expected) {
-        // check parameters
-        if (allData == null || allData.length == 0) {
-            throw new IllegalArgumentException("Data is invalid.");
-        }
-        if (expected == null || expected.length != allData.length) {
-            throw new IllegalArgumentException("Expected results are invalid.");
-        }
-
-        randomizeWeightsAndBiases();
-
-        for (int data = 0; data < allData.length; data++) {
-            // check parameters for each training case
-            if (allData[data].length != layers[0].getSize()) {
-                throw new IllegalArgumentException("Dataset @ index " + data + " is invalid.");
-            }
-            if (expected[data].length != layers[layers.length - 1].getSize()) {
-                throw new IllegalArgumentException(
-                        "Expected results @ index " + data + " is invalid.");
-            }
-
-            // process this case
-            
-            // set the input layer to this dataset
-            for (int i = 0 ; i < layers[0].getSize(); i++) {
-                layers[0].get(i).setValue(allData[data][i]);
-            }
-            
-            // forward propagate to calculate error
-            forwardPropagate();
-        }
-    }
-
-    /**
-     * Populates all connection weights and neuron biases with random values.
-     * The input layer will be left alone, meaning all 0 bias values
-     */
-    private void randomizeWeightsAndBiases() {
+    protected void randomizeWeightsAndBiases() {
         Random rng = new Random();
         for (int i = 1; i < layers.length; i++) {
             for (int j = 0; j < layers[i].getSize(); j++) {
@@ -148,53 +117,53 @@ public class NeuralNetwork {
             }
         }
     }
-    
+
     /**
      * Run the neural network on a given dataset
+     * 
      * @param data The data to predict from (input)
      * @return The results
      */
     public float[] predict(float[] data) {
-    	// check parameters
-    	if (data == null || data.length != layers[0].getSize()) {
+        // check parameters
+        if (data == null || data.length != layers[0].getSize()) {
             throw new IllegalArgumentException("Data is invalid.");
-    	}
-    	
-    	// set input layer to the data
-    	for (int i = 0; i < data.length; i++) {
-    		layers[0].get(i).setValue(data[i]);
-    	}
-    	
-    	// forward propagate with data
-    	forwardPropagate();
-    	
-    	// return the output layer
-    	float[] output = new float[layers[layers.length-1].getSize()];
-    	for (int i = 0; i < output.length; i++) {
-    		output[i] = layers[layers.length-1].get(i).getValue();
-    	}
-    	
-    	return output;
-    }
-   
-    /**
-     * Calculates forward propagation in the network
-     */
-    private void forwardPropagate() {
-    	// calculate activation for each neuron layer by later
-    	for (int i = 1; i < layers.length; i++) {
-    		for (int j = 0; j < layers[i].getSize(); j++) {
-    			// set this neuron value to its calculated activation
-    			layers[i].get(j).setValue(layers[i].get(j).calcActivation());
-    		}
-    	}
+        }
+
+        // set input layer to the data
+        for (int i = 0; i < data.length; i++) {
+            layers[0].get(i).setValue(data[i]);
+        }
+
+        // forward propagate with data
+        forwardPropagate();
+
+        // return the output layer
+        float[] output = new float[layers[layers.length - 1].getSize()];
+        for (int i = 0; i < output.length; i++) {
+            output[i] = layers[layers.length - 1].get(i).getValue();
+        }
+
+        return output;
     }
 
     /**
-     * 
+     * Calculates forward propagation in the network with the current input layer
+     */
+    protected void forwardPropagate() {
+        // calculate activation for each neuron layer by later
+        for (int i = 1; i < layers.length; i++) {
+            for (int j = 0; j < layers[i].getSize(); j++) {
+                // set this neuron value to its calculated activation
+                layers[i].get(j).setValue(layers[i].get(j).calcActivation());
+            }
+        }
+    }
+
+    /**
      * @return The total number of connections in this network
      */
-    private int getNumConnections() {
+    protected int getNumConnections() {
         int n = 0;
         for (int i = 1; i < layers.length; i++) {
             n += layers[i].getSize() * layers[i - 1].getSize();
