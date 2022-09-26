@@ -6,7 +6,7 @@ import io.github.kevin.mocha.Trainer;
 /**
  * This class implements standard gradient descent
  * 
- * @author kx
+ * @author kevin
  */
 public class GradientDescent extends Trainer {
 
@@ -14,6 +14,15 @@ public class GradientDescent extends Trainer {
         super(nn, allData, expectedData);
     }
 
+    /**
+     * The derivative of the cost function with respect to weight is z(L) = w(L) *
+     * a(L−1) + b(L)
+     * 
+     * (change in z with respect to w) * (change in activation with respect to z) *
+     * (change in C (cost) with respect to activation)
+     * 
+     * Which works out to dz(L)/dw(L) * da(L)/dz(L) * dC(L)/dz(L) = dC(L)/dw(L)
+     */
     @Override
     public void train() {
         randomizeWeightsAndBiases();
