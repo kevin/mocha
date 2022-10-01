@@ -14,7 +14,7 @@ import io.github.kevin.mocha.Trainer;
  * 
  * Which works out to dz(L)/dw(L) * da(L)/dz(L) * dC(L)/dz(L) = dC(L)/dw(L)
  * 
- * @author kx
+ * @author kevin
  */
 public class GradientDescent extends Trainer {
 

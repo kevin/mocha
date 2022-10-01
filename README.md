@@ -6,7 +6,7 @@ Using objects to represent a neural network, meant to be easy to understand <sub
 
 Custom learning algorithms can be implemented for various techniques with the data such as curriculum learning or stochastic gradient descent, with a standard gradient descent being included at the moment.
 
-Written mostly to help me understand the math behind a neural network as well as practice library design with objects and inheritance.
+Written mostly to help me understand the math behind training a neural network as well as practice git and library design with objects and inheritance.
 
 ## Credit
 3blue1brown's [deep learning series](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) on youtube
