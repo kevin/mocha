@@ -17,9 +17,22 @@ import io.github.kevin.mocha.Trainer;
  * @author kevin
  */
 public class GradientDescent extends Trainer {
+    
+    // the number of epochs to train with
+    private int epochs;
 
     public GradientDescent(NeuralNetwork nn, float[][] allData, float[][] expectedData) {
         super(nn, allData, expectedData);
+        // by default use 1 epoch
+        this.epochs = 1;
+    }
+    
+    /**
+     * Set the number of epochs to train with
+     * @param num The number of epochs
+     */
+    public void setEpochs(int num) {
+        this.epochs = num;
     }
 
     /**

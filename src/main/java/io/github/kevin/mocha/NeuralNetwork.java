@@ -69,11 +69,7 @@ public class NeuralNetwork {
      * @param index The index of the desired neuron between 0 and the layer size - 1
      * @return
      */
-    public Neuron getNeuron(int layer, int index) {
-        // parameters must be in bounds
-        if (layer < 0 || layer >= layers.length) {
-            throw new IndexOutOfBoundsException();
-        }
+    protected Neuron getNeuron(int layer, int index) {
         return layers[layer].get(index);
     }
    

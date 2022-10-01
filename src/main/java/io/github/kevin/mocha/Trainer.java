@@ -1,6 +1,7 @@
 package io.github.kevin.mocha;
 
 import io.github.kevin.mocha.internal.Layer;
+import io.github.kevin.mocha.internal.Neuron;
 
 /**
  * This class represents a learning algorithm implementation
@@ -82,6 +83,14 @@ public abstract class Trainer {
     public abstract void train();
 
     // wrap methods for learning algorithms and to prevent breaking the network
+    
+    protected Neuron getNeuron(int layer, int index) {
+        // parameters must be in bounds
+        if (layer < 0 || layer >= nn.getLayers().length) {
+            throw new IndexOutOfBoundsException();
+        }
+        return nn.getNeuron(layer, index);
+    }
 
     /**
      * Get a layer object at an index
