@@ -69,8 +69,7 @@ public abstract class Trainer {
                 throw new IllegalArgumentException("Dataset @ index " + data + " is invalid.");
             }
             if (expectedData[data].length != getLayer(getNumLayers() - 1).getSize()) {
-                throw new IllegalArgumentException(
-                        "Expected results @ index " + data + " is invalid.");
+                throw new IllegalArgumentException("Expected results @ index " + data + " is invalid.");
             }
         }
     }
@@ -82,8 +81,17 @@ public abstract class Trainer {
      */
     public abstract void train();
 
-    // wrap methods for learning algorithms and to prevent breaking the network
-    
+    // expose certain methods for learning algorithms (children of this class) and
+    // to prevent breaking the network.
+    // Intended to maintain immutability of the network except for the training algorithm.
+
+    /**
+     * Get the neuron at an index of a layer
+     * 
+     * @param layer The index of the layer
+     * @param index The index within the layer
+     * @return the neuron
+     */
     protected Neuron getNeuron(int layer, int index) {
         // parameters must be in bounds
         if (layer < 0 || layer >= nn.getLayers().length) {
