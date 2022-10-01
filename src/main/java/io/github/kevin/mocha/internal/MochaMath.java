@@ -44,21 +44,4 @@ public class MochaMath {
         return sum / out.length;
     }
 
-    /**
-     * The derivative of the cost function with respect to weight. z(L) = w(L) *
-     * a(L−1) + b(L)
-     * 
-     * (change in z with respect to w) * (change in activation with respect to z) *
-     * (change in C (cost) with respect to activation)
-     * 
-     * Which works out to dz(L)/dw(L) * da(L)/dz(L) * dC(L)/dz(L) = dC(L)/dw(L)
-     * 
-     */
-
-//    public static float gradientDescent(float cost, float weight) {
-//        float sum = 0.0f;
-//        
-//        return sum / out.length;
-//    }
-
 }
