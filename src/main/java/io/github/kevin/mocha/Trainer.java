@@ -4,7 +4,10 @@ import io.github.kevin.mocha.internal.Layer;
 import io.github.kevin.mocha.internal.Neuron;
 
 /**
- * This class represents a learning algorithm implementation
+ * This class represents a learning algorithm implementation.
+ * 
+ * Exposes certain methods for learning algorithms (children of this class).
+ * Intended to maintain immutability of the network except for the training algorithm.
  * 
  * @author kevin
  */
@@ -80,10 +83,6 @@ public abstract class Trainer {
      * @see io.github.kevin.mocha.learning.GradientDescent
      */
     public abstract void train();
-
-    // expose certain methods for learning algorithms (children of this class) and
-    // to prevent breaking the network.
-    // Intended to maintain immutability of the network except for the training algorithm.
 
     /**
      * Get the neuron at an index of a layer
