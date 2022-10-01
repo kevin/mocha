@@ -16,7 +16,7 @@ Written mostly to help me understand the math behind training a neural network a
 [This article](https://towardsdatascience.com/creating-a-neural-network-from-scratch-302e8fb61703)
 
 ### TODO:
-[Maven](https://dzone.com/articles/how-to-create-a-java-library-from-scratch-to-maven)
+[Maven](https://dzone.com/articles/how-to-create-a-java-library-from-scratch-to-maven) / add library to central repository when v1 is complete
 
 Test implementing a Trainer outside of the packages
 
