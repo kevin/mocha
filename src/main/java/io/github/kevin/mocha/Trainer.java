@@ -137,12 +137,30 @@ public abstract class Trainer {
         }
         return nn.getLayers()[index];
     }
+    
+    /**
+     * @return Get the current learning rate for this neural network
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#getLearningRate()
+     */
+    protected float getLearningRate() {
+        return nn.getLearningRate();
+    }
 
     /**
      * @return The number of layers in the network.
      */
     protected int getNumLayers() {
         return nn.getLayers().length;
+    }
+    
+    /**
+     * @return The output layer as an array of float values
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#getOutputLayer()
+     */
+    protected float[] getOutputLayer() {
+        return nn.getOutputLayer();
     }
 
     /**

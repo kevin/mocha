@@ -2,6 +2,7 @@ package io.github.kevin.mocha.learning;
 
 import io.github.kevin.mocha.NeuralNetwork;
 import io.github.kevin.mocha.Trainer;
+import io.github.kevin.mocha.internal.MochaMath;
 
 /**
  * This class implements standard gradient descent.
@@ -44,12 +45,14 @@ public class GradientDescent extends Trainer {
             // process this case
 
             // set the input layer to this dataset
-            for (int i = 0; i < layers[0].getSize(); i++) {
-                layers[0].get(i).setValue(allData[data][i]);
+            for (int i = 0; i < getLayer(0).getSize(); i++) {
+                getLayer(0).get(i).setValue(getData()[data][i]);
             }
 
             // forward propagate to calculate error
             forwardPropagate();
+            
+            float cost = MochaMath.mse(getOutputLayer(), getExpectedData()[data]);
         }
     }
 

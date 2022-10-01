@@ -83,7 +83,6 @@ public class NeuralNetwork {
     }
 
     /**
-     * 
      * @return Get the current learning rate for this neural network
      */
     public float getLearningRate() {
@@ -136,6 +135,13 @@ public class NeuralNetwork {
         forwardPropagate();
 
         // return the output layer
+        return getOutputLayer();
+    }
+    
+    /**
+     * @return The output layer as an array of float values
+     */
+    public float[] getOutputLayer() {
         float[] output = new float[layers[layers.length - 1].getSize()];
         for (int i = 0; i < output.length; i++) {
             output[i] = layers[layers.length - 1].get(i).getValue();
