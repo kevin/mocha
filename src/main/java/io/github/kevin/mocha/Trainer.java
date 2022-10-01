@@ -5,7 +5,7 @@ import io.github.kevin.mocha.internal.Layer;
 /**
  * This class represents a learning algorithm implementation
  * 
- * @author kx
+ * @author kevin
  */
 public abstract class Trainer {
 
@@ -68,13 +68,15 @@ public abstract class Trainer {
                 throw new IllegalArgumentException("Dataset @ index " + data + " is invalid.");
             }
             if (expectedData[data].length != getLayer(getNumLayers() - 1).getSize()) {
-                throw new IllegalArgumentException("Expected results @ index " + data + " is invalid.");
+                throw new IllegalArgumentException(
+                        "Expected results @ index " + data + " is invalid.");
             }
         }
     }
 
     /**
      * The implementation of the learning algorithm.
+     * 
      * @see io.github.kevin.mocha.learning.GradientDescent
      */
     public abstract void train();
