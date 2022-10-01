@@ -7,7 +7,7 @@ import io.github.kevin.mocha.internal.Layer;
 import io.github.kevin.mocha.internal.Neuron;
 
 /**
- * This class represents a whole network, which the end user can use
+ * This class represents a whole network, which the end user creates.
  * 
  * @author kevin
  */
@@ -17,7 +17,7 @@ public class NeuralNetwork {
     private float learningRate;
 
     /**
-     * Most basic constructor to create a network
+     * Most basic constructor to create a network.
      * 
      * @param sizes An array representing the number of neurons in each layer, where
      *              sizes[0] is the input layer, sizes[n-1] is the output layer, and
@@ -63,7 +63,7 @@ public class NeuralNetwork {
     }
 
     /**
-     * Get the neuron at a specific layer and index
+     * Get the neuron at a specific layer and index.
      * 
      * @param layer The layer of the desired neuron
      * @param index The index of the desired neuron between 0 and the layer size - 1
@@ -74,7 +74,8 @@ public class NeuralNetwork {
     }
    
     /**
-     * Get the layers
+     * Get the layers.
+     * 
      * @return All layers
      */
     protected Layer[] getLayers() {
@@ -90,7 +91,7 @@ public class NeuralNetwork {
     }
 
     /**
-     * Set a new learning rate for this neural network
+     * Set a new learning rate for this neural network.
      * 
      * @param rate The new learning rate to train with
      */
@@ -100,7 +101,7 @@ public class NeuralNetwork {
 
     /**
      * Populates all connection weights and neuron biases with random values. The
-     * input layer will be left alone, meaning all 0 bias values
+     * input layer will be left alone, meaning all 0 bias values.
      */
     protected void randomizeWeightsAndBiases() {
         Random rng = new Random();
@@ -115,7 +116,7 @@ public class NeuralNetwork {
     }
 
     /**
-     * Run the neural network on a given dataset
+     * Run the neural network on a given dataset.
      * 
      * @param data The data to predict from (input)
      * @return The results
@@ -144,7 +145,7 @@ public class NeuralNetwork {
     }
 
     /**
-     * Calculates forward propagation in the network with the current input layer
+     * Calculates forward propagation in the network with the current input layer.
      */
     protected void forwardPropagate() {
         // calculate activation for each neuron layer by later

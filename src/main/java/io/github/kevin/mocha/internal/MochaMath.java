@@ -1,14 +1,14 @@
 package io.github.kevin.mocha.internal;
 
 /**
- * This class provides math functions for the neural network
+ * This class provides math functions for the neural network.
  * 
  * @author kevin
  */
 public class MochaMath {
 
     /**
-     * Sigmoid function for non-linearity
+     * Sigmoid function for non-linearity.
      * 
      * @param f The value to be squishified
      * @return 1 / (1 + e^-x)
@@ -18,7 +18,7 @@ public class MochaMath {
     }
 
     /**
-     * ReLU function for non-linearity
+     * ReLU function for non-linearity.
      * 
      * @param f The value to to be changed
      * @return
@@ -28,7 +28,7 @@ public class MochaMath {
     }
 
     /**
-     * Cost function using mean squared error
+     * Cost function using mean squared error.
      * 
      * @param out      The output layer
      * @param expected The expected output

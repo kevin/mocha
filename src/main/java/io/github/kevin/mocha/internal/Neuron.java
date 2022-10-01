@@ -1,7 +1,7 @@
 package io.github.kevin.mocha.internal;
 
 /**
- * This class represents one neuron in a layer and its connections
+ * This class represents one neuron in a layer and its connections.
  * 
  * @author kevin
  */
@@ -18,7 +18,7 @@ public class Neuron {
     private Connection[] out;
 
     /**
-     * Create a neuron object
+     * Create a neuron object.
      * 
      * @param value         The initial value of this neuron
      * @param connectionsIn The number of incoming connections to this neuron
@@ -46,14 +46,14 @@ public class Neuron {
     }
 
     /**
-     * @return The current value of this neuron
+     * @return The current value of this neuron.
      */
     public float getValue() {
         return value;
     }
 
     /**
-     * Set a new value for this neuron
+     * Set a new value for this neuron.
      * 
      * @param value The new value
      */
@@ -62,14 +62,14 @@ public class Neuron {
     }
 
     /**
-     * @return The current bias of this neuron
+     * @return The current bias of this neuron.
      */
     public float getBias() {
         return bias;
     }
 
     /**
-     * Set a new bias for this neuron
+     * Set a new bias for this neuron.
      * 
      * @param bias The new bias value
      */
@@ -78,7 +78,7 @@ public class Neuron {
     }
 
     /**
-     * Get the incoming connection at an index
+     * Get the incoming connection at an index.
      * 
      * @param index The index of the connection
      * @return The connection object at the index
@@ -93,7 +93,7 @@ public class Neuron {
     }
 
     /**
-     * Set a incoming connection object
+     * Set a incoming connection object.
      * 
      * @param index The index of the connection to set
      * @param con   The Connection object to set it to
@@ -108,7 +108,7 @@ public class Neuron {
     }
 
     /**
-     * Get the outgoing connection at an index
+     * Get the outgoing connection at an index.
      * 
      * @param index The index of the connection
      * @return The connection object at the index
@@ -123,7 +123,7 @@ public class Neuron {
     }
 
     /**
-     * Set a outgoing connection object
+     * Set a outgoing connection object.
      * 
      * @param index The index of the connection to set
      * @param con   The Connection object to set it to
@@ -142,7 +142,7 @@ public class Neuron {
     }
 
     /**
-     * Calculate the activation of this neuron
+     * Calculate the activation of this neuron.
      * 
      * @return the activation
      */

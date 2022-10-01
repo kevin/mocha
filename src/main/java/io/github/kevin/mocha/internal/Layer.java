@@ -1,7 +1,7 @@
 package io.github.kevin.mocha.internal;
 
 /**
- * This class represents a layer of neurons
+ * This class represents a layer of neurons.
  * 
  * @author kevin
  */
@@ -10,7 +10,7 @@ public class Layer {
     private Neuron[] neurons;
 
     /**
-     * Create a layer
+     * Create a layer.
      * 
      * @param size              The number of neurons in this layer
      * @param previousLayerSize The size of the previous layer to determine how many
@@ -24,7 +24,7 @@ public class Layer {
     }
 
     /**
-     * Get the neuron at an index of this layer
+     * Get the neuron at an index of this layer.
      * 
      * @param index The index of the neuron
      * @return the Neuron object
