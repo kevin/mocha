@@ -4,7 +4,7 @@ import io.github.kevin.mocha.NeuralNetwork;
 import io.github.kevin.mocha.Trainer;
 
 /**
- * This class implements standard gradient descent
+ * This class implements standard gradient descent.
  * 
  * @author kevin
  */
@@ -20,7 +20,7 @@ public class GradientDescent extends Trainer {
     }
     
     /**
-     * Set the number of epochs to train with
+     * Set the number of epochs to train with.
      * @param num The number of epochs
      */
     public void setEpochs(int num) {
@@ -39,18 +39,18 @@ public class GradientDescent extends Trainer {
     @Override
     public void train() {
         randomizeWeightsAndBiases();
+        
+        for (int data = 0; data < getData().length; data++) {
+            // process this case
 
-//        for (int data = 0; data < allData.length; data++) {
-//            // process this case
-//
-//            // set the input layer to this dataset
-//            for (int i = 0; i < layers[0].getSize(); i++) {
-//                layers[0].get(i).setValue(allData[data][i]);
-//            }
-//
-//            // forward propagate to calculate error
-//            forwardPropagate();
-//        }
+            // set the input layer to this dataset
+            for (int i = 0; i < layers[0].getSize(); i++) {
+                layers[0].get(i).setValue(allData[data][i]);
+            }
+
+            // forward propagate to calculate error
+            forwardPropagate();
+        }
     }
 
 }

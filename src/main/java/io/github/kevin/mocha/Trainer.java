@@ -21,7 +21,7 @@ public abstract class Trainer {
     private float[][] expectedData;
 
     /**
-     * Create a trainer object
+     * Create a trainer object.
      * 
      * @param nn
      * @param allData      The set of training data, where any data[row].length
@@ -40,7 +40,7 @@ public abstract class Trainer {
     }
 
     /**
-     * Set new data for this trainer
+     * Set new data for this trainer.
      * 
      * @param allData      The set of training data, where any data[row].length
      *                     (size of one training example) == layers[0].getSize()
@@ -55,7 +55,7 @@ public abstract class Trainer {
     }
 
     /**
-     * Validate the data
+     * Validate the data.
      */
     private void validateData() {
         if (allData == null || allData.length == 0) {
@@ -83,13 +83,36 @@ public abstract class Trainer {
      * @see io.github.kevin.mocha.learning.GradientDescent
      */
     public abstract void train();
-
+    
     /**
-     * Get the neuron at an index of a layer
+     * Get the data.
+     * NOTE: This does allow the data to be mutated by the training algorithm.
+     * 
+     * @return data
+     */
+    protected float[][] getData() {
+        return allData;
+    }
+    
+    /**
+     * Get the expected data.
+     * NOTE: This does allow the data to be mutated by the training algorithm.
+     * 
+     * Get the expected data.
+     * @return expectedData
+     */
+    protected float[][] getExpectedData() {
+        return expectedData;
+    }
+    
+    /**
+     * Get the neuron at an index of a layer.
      * 
      * @param layer The index of the layer
      * @param index The index within the layer
      * @return the neuron
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#getNeuron(int layer, int, index)
      */
     protected Neuron getNeuron(int layer, int index) {
         // parameters must be in bounds
@@ -100,10 +123,12 @@ public abstract class Trainer {
     }
 
     /**
-     * Get a layer object at an index
+     * Get a layer object at an index.
      * 
      * @param index The index of the layer
      * @return The layer
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#getLayers()
      */
     protected Layer getLayer(int index) {
         // parameters must be in bounds
@@ -114,7 +139,7 @@ public abstract class Trainer {
     }
 
     /**
-     * @return The number of layers in the network
+     * @return The number of layers in the network.
      */
     protected int getNumLayers() {
         return nn.getLayers().length;
@@ -122,10 +147,21 @@ public abstract class Trainer {
 
     /**
      * Populates all connection weights and neuron biases with random values. The
-     * input layer will be left alone, meaning all 0 bias values
+     * input layer will be left alone, meaning all 0 bias values.
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#randomizeWeightsAndBiases()
      */
     protected void randomizeWeightsAndBiases() {
         nn.randomizeWeightsAndBiases();
+    }
+    
+    /**
+     * Calculates forward propagation in the network with the current input layer.
+     * 
+     * @see io.github.kevin.mocha.NeuralNetwork#forwardPropagate()
+     */
+    protected void forwardPropagate() {
+        nn.forwardPropagate();
     }
 
 }

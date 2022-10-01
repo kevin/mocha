@@ -1,7 +1,7 @@
 package io.github.kevin.mocha.internal;
 
 /**
- * This class represents one connection between two neurons
+ * This class represents one connection between two neurons.
  * 
  * @author kevin
  */
@@ -12,7 +12,7 @@ public class Connection {
     private float weight;
 
     /**
-     * Create an empty connection
+     * Create an empty connection.
      * 
      * @param from
      * @param to
@@ -31,7 +31,7 @@ public class Connection {
     }
 
     /**
-     * Set the value of this connection's weight
+     * Set the value of this connection's weight.
      * 
      * @param f The new weight
      */
@@ -40,14 +40,14 @@ public class Connection {
     }
 
     /**
-     * @return The neuron this connection comes from
+     * @return The neuron this connection comes from.
      */
     public Neuron getFrom() {
         return from;
     }
 
     /**
-     * Set the Neuron this connection comes from
+     * Set the Neuron this connection comes from.
      * 
      * @param from The neuron to come from
      */
@@ -56,14 +56,14 @@ public class Connection {
     }
 
     /**
-     * @return the Neuron this connection goes to
+     * @return the Neuron this connection goes to.
      */
     public Neuron getTo() {
         return to;
     }
 
     /**
-     * Set the Neuron this connection goes to
+     * Set the Neuron this connection goes to.
      * 
      * @param to The neuron to point to
      */
