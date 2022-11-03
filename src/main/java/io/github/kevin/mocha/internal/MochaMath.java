@@ -9,6 +9,7 @@ public class MochaMath {
 
     /**
      * Sigmoid function for non-linearity.
+     * Currently used in Neuron.java calcActivation()
      * 
      * @param f The value to be squishified
      * @return 1 / (1 + e^-x)
@@ -19,6 +20,7 @@ public class MochaMath {
 
     /**
      * ReLU function for non-linearity.
+     * Currently unused.
      * 
      * @param f The value to to be changed
      * @return
