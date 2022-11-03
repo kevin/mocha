@@ -7,7 +7,8 @@ import io.github.kevin.mocha.internal.Neuron;
  * This class represents a learning algorithm implementation.
  * 
  * Exposes certain methods for learning algorithms (children of this class).
- * Intended to maintain immutability of the network except for the training algorithm.
+ * Intended to maintain immutability of the network except for the training
+ * algorithm.
  * 
  * @author kevin
  */
@@ -81,30 +82,34 @@ public abstract class Trainer {
      * The implementation of the learning algorithm.
      * 
      * @see io.github.kevin.mocha.learning.GradientDescent
+     * 
+     * @param trainingThreshold A threshold to stop training; probably convergence
+     *                          of weight/biases
      */
-    public abstract void train();
-    
+    public abstract void train(float trainingThreshold);
+
     /**
-     * Get the data.
-     * NOTE: This does allow the data to be mutated by the training algorithm.
+     * Get the data. NOTE: This does allow the data to be mutated by the training
+     * algorithm.
      * 
      * @return data
      */
     protected float[][] getData() {
         return allData;
     }
-    
+
     /**
-     * Get the expected data.
-     * NOTE: This does allow the data to be mutated by the training algorithm.
+     * Get the expected data. NOTE: This does allow the data to be mutated by the
+     * training algorithm.
      * 
      * Get the expected data.
+     * 
      * @return expectedData
      */
     protected float[][] getExpectedData() {
         return expectedData;
     }
-    
+
     /**
      * Get the neuron at an index of a layer.
      * 
@@ -137,7 +142,7 @@ public abstract class Trainer {
         }
         return nn.getLayers()[index];
     }
-    
+
     /**
      * @return Get the current learning rate for this neural network
      * 
@@ -153,7 +158,7 @@ public abstract class Trainer {
     protected int getNumLayers() {
         return nn.getLayers().length;
     }
-    
+
     /**
      * @return The output layer as an array of float values
      * 
@@ -172,7 +177,7 @@ public abstract class Trainer {
     protected void randomizeWeightsAndBiases() {
         nn.randomizeWeightsAndBiases();
     }
-    
+
     /**
      * Calculates forward propagation in the network with the current input layer.
      * 

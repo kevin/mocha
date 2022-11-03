@@ -38,7 +38,7 @@ public class GradientDescent extends Trainer {
      * Which works out to dz(L)/dw(L) * da(L)/dz(L) * dC(L)/dz(L) = dC(L)/dw(L)
      */
     @Override
-    public void train() {
+    public void train(float trainingThreshold) {
         randomizeWeightsAndBiases();
         
         for (int data = 0; data < getData().length; data++) {
