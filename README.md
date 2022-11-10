@@ -15,6 +15,8 @@ Written mostly to help me understand the math behind training a neural network a
 
 [This article](https://towardsdatascience.com/creating-a-neural-network-from-scratch-302e8fb61703)
 
+[This article](https://arturgalstyan.dev/blog/neural_network_in_numpy)
+
 ### TODO:
 [Maven](https://dzone.com/articles/how-to-create-a-java-library-from-scratch-to-maven) / add library to central repository when v1 is complete
 
