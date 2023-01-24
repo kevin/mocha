@@ -36,6 +36,9 @@ public class GradientDescent extends Trainer {
      * (change in C (cost) with respect to activation)
      * 
      * Which works out to dz(L)/dw(L) * da(L)/dz(L) * dC(L)/dz(L) = dC(L)/dw(L)
+     * 
+     * @param trainingThreshold A threshold to stop training; probably convergence
+     *                          of weight/biases
      */
     @Override
     public void train(float trainingThreshold) {
@@ -53,6 +56,10 @@ public class GradientDescent extends Trainer {
             forwardPropagate();
             
             float cost = MochaMath.mse(getOutputLayer(), getExpectedData()[data]);
+//            System.out.println("Dataset #" + data + " cost: " + cost);
+//            for (int i = 0; i < getOutputLayer().length; i++) {
+//                System.out.println("Output: " + getOutputLayer()[i] + " Expected: " + getExpectedData()[data][i]);
+//            }
         }
     }
 
