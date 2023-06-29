@@ -17,6 +17,8 @@ public abstract class Trainer {
     private float[][] allData;
     // the set of expected results
     private float[][] expectedData;
+    // the number of epochs to train with
+    private int epochs;
 
     /**
      * Create a trainer object.
@@ -32,9 +34,20 @@ public abstract class Trainer {
         this.nn = nn;
         this.allData = allData;
         this.expectedData = expectedData;
+        
+        // by default use 1 epoch
+        this.epochs = 1;
 
         // validate data
         validateData();
+    }
+    
+    /**
+     * Set the number of epochs to train with.
+     * @param num The number of epochs
+     */
+    public void setEpochs(int num) {
+        this.epochs = num;
     }
 
     /**
@@ -84,6 +97,14 @@ public abstract class Trainer {
      *                          of weight/biases
      */
     public abstract void train(float trainingThreshold);
+    
+    /**
+     * Get the number of epochs to train with
+     * @return epochs
+     */
+    public int getEpochs() {
+    	return epochs;
+    }
 
     /**
      * Get the data. NOTE: This does allow the data to be mutated by the training

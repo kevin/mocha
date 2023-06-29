@@ -11,23 +11,10 @@ import mocha.Trainer;
  */
 public class GradientDescent extends Trainer {
     
-    // the number of epochs to train with
-    private int epochs;
-
     public GradientDescent(NeuralNetwork nn, float[][] allData, float[][] expectedData) {
         super(nn, allData, expectedData);
-        // by default use 1 epoch
-        this.epochs = 1;
     }
     
-    /**
-     * Set the number of epochs to train with.
-     * @param num The number of epochs
-     */
-    public void setEpochs(int num) {
-        this.epochs = num;
-    }
-
     /**
      * The derivative of the cost function with respect to weight is z(L) = w(L) *
      * a(L−1) + b(L)

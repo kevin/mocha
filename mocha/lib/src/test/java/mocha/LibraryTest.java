@@ -15,7 +15,7 @@ class LibraryTest {
 //        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
 //    }
 	@Test void simpleNN() {
-		NeuralNetwork nn = new NeuralNetwork(new int[] { 784, 16, 16, 10 });
+//		NeuralNetwork nn = new NeuralNetwork(new int[] { 784, 16, 16, 10 });
 //      System.out.println(nn);
 //      System.out.println(nn.getNeuron(2, 14).getOut(9) == nn.getNeuron(3, 9).getIn(14));
 
@@ -46,5 +46,9 @@ class LibraryTest {
 		for (int i = 0; i < testData.length; i++) {
 			System.out.println(simple.predict(testData[i])[0] + " Actual: " + expectedData[i][0]);
 		}
+	}
+	
+	public static void main(String[] args) {
+		new LibraryTest().simpleNN();
 	}
 }
