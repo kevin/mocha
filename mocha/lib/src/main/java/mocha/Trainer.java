@@ -93,10 +93,10 @@ public abstract class Trainer {
      * 
      * @see io.github.kevin.mocha.learning.GradientDescent
      * 
-     * @param trainingThreshold A threshold to stop training; probably convergence
-     *                          of weight/biases
+     * @param trainingValue A value useful for training; perhaps learning rate or convergence
+     *                     	threshold of weight/biases
      */
-    public abstract void train(float trainingThreshold);
+    public abstract void train(float trainingValue);
     
     /**
      * Get the number of epochs to train with

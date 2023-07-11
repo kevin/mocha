@@ -31,7 +31,7 @@ class LibraryTest {
 			expectedData[i][0] = trainingData[i][0];
 		}
 
-		Trainer gd = new GradientDescent(simple, trainingData, expectedData);
+		GradientDescent gd = new GradientDescent(simple, trainingData, expectedData);
 		gd.train(0);
 
 		float[][] testData = new float[10][3];
